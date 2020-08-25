@@ -1,0 +1,194 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<edmx:Edmx Version="3.0" xmlns:edmx="http://schemas.microsoft.com/ado/2009/11/edmx">
+  <!-- EF Runtime content -->
+  <edmx:Runtime>
+    <!-- SSDL content -->
+    <edmx:StorageModels>
+    <Schema Namespace="TestModel.Store" Alias="Self" Provider="System.Data.SqlClient" ProviderManifestToken="2008" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" xmlns="http://schemas.microsoft.com/ado/2009/11/edm/ssdl">
+        <EntityContainer Name="TestModelStoreContainer">
+          <EntitySet Name="tCustomerEmail" EntityType="TestModel.Store.tCustomerEmail" store:Type="Tables" store:Schema="adm" store:Name="tCustomerEmail">
+            <DefiningQuery>SELECT 
+      [tCustomerEmail].[CustomerEmailID] AS [CustomerEmailID], 
+      [tCustomerEmail].[ShortName] AS [ShortName], 
+      [tCustomerEmail].[ClientName] AS [ClientName], 
+      [tCustomerEmail].[EmailList] AS [EmailList], 
+      [tCustomerEmail].[EmailSubject] AS [EmailSubject], 
+      [tCustomerEmail].[EmailText] AS [EmailText]
+      FROM [adm].[tCustomerEmail] AS [tCustomerEmail]</DefiningQuery>
+          </EntitySet>
+          <EntitySet Name="APPLICATION_LOG" EntityType="TestModel.Store.APPLICATION_LOG" store:Type="Tables" store:Schema="dbo" store:Name="APPLICATION_LOG">
+            <DefiningQuery>SELECT 
+      [APPLICATION_LOG].[LogID] AS [LogID], 
+      [APPLICATION_LOG].[ApplicationName] AS [ApplicationName], 
+      [APPLICATION_LOG].[ApplicationType] AS [ApplicationType], 
+      [APPLICATION_LOG].[InnerException] AS [InnerException], 
+      [APPLICATION_LOG].[StackTrace] AS [StackTrace], 
+      [APPLICATION_LOG].[ApplicationMessage] AS [ApplicationMessage], 
+      [APPLICATION_LOG].[LogDate] AS [LogDate], 
+      [APPLICATION_LOG].[IsError] AS [IsError]
+      FROM [dbo].[APPLICATION_LOG] AS [APPLICATION_LOG]</DefiningQuery>
+          </EntitySet>
+          <EntitySet Name="Customer_Programs" EntityType="TestModel.Store.Customer_Programs" store:Type="Tables" Schema="dbo" />
+        </EntityContainer>
+        <!--Errors Found During Generation:
+      warning 6002: The table/view 'Test.adm.tCustomerEmail' does not have a primary key defined. The key has been inferred and the definition was created as a read-only table/view.
+      -->
+        <EntityType Name="tCustomerEmail">
+          <Key>
+            <PropertyRef Name="CustomerEmailID" />
+            <PropertyRef Name="ShortName" />
+            <PropertyRef Name="ClientName" />
+          </Key>
+          <Property Name="CustomerEmailID" Type="smallint" Nullable="false" />
+          <Property Name="ShortName" Type="varchar" Nullable="false" MaxLength="255" />
+          <Property Name="ClientName" Type="varchar" Nullable="false" MaxLength="255" />
+          <Property Name="EmailList" Type="varchar(max)" />
+          <Property Name="EmailSubject" Type="varchar" MaxLength="255" />
+          <Property Name="EmailText" Type="varchar" MaxLength="255" />
+        </EntityType>
+        <!--Errors Found During Generation:
+      warning 6002: The table/view 'Test.dbo.APPLICATION_LOG' does not have a primary key defined. The key has been inferred and the definition was created as a read-only table/view.
+      -->
+        <EntityType Name="APPLICATION_LOG">
+          <Key>
+            <PropertyRef Name="LogID" />
+          </Key>
+          <Property Name="LogID" Type="int" Nullable="false" />
+          <Property Name="ApplicationName" Type="varchar" MaxLength="500" />
+          <Property Name="ApplicationType" Type="varchar" MaxLength="50" />
+          <Property Name="InnerException" Type="varchar(max)" />
+          <Property Name="StackTrace" Type="varchar(max)" />
+          <Property Name="ApplicationMessage" Type="varchar(max)" />
+          <Property Name="LogDate" Type="smalldatetime" />
+          <Property Name="IsError" Type="int" />
+        </EntityType>
+        <EntityType Name="Customer_Programs">
+          <Key>
+            <PropertyRef Name="ID" />
+          </Key>
+          <Property Name="ID" Type="int" Nullable="false" StoreGeneratedPattern="Identity" />
+          <Property Name="Customer_ID" Type="int" />
+          <Property Name="Customer_Name" Type="varchar" MaxLength="200" />
+          <Property Name="Program_RunTime" Type="varchar" MaxLength="200" />
+          <Property Name="POC" Type="varchar" MaxLength="200" />
+          <Property Name="Executable_Path" Type="varchar" MaxLength="200" />
+          <Property Name="OutputFiles_Path" Type="varchar" MaxLength="200" />
+          <Property Name="Comments" Type="varchar(max)" />
+        </EntityType>
+      </Schema></edmx:StorageModels>
+    <!-- CSDL content -->
+    <edmx:ConceptualModels>
+      <Schema Namespace="TestModel" Alias="Self" p1:UseStrongSpatialTypes="false" xmlns:annotation="http://schemas.microsoft.com/ado/2009/02/edm/annotation" xmlns:p1="http://schemas.microsoft.com/ado/2009/02/edm/annotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm">
+        <EntityContainer Name="TestEntities" p1:LazyLoadingEnabled="true">
+          <EntitySet Name="tCustomerEmails" EntityType="TestModel.tCustomerEmail" />
+          <EntitySet Name="Customer_Programs" EntityType="TestModel.Customer_Programs" />
+          <EntitySet Name="APPLICATION_LOG" EntityType="TestModel.APPLICATION_LOG" />
+        </EntityContainer>
+        <EntityType Name="tCustomerEmail">
+          <Key>
+            <PropertyRef Name="CustomerEmailID" />
+            <PropertyRef Name="ShortName" />
+            <PropertyRef Name="ClientName" />
+          </Key>
+          <Property Name="CustomerEmailID" Type="Int16" Nullable="false" />
+          <Property Name="ShortName" Type="String" Nullable="false" MaxLength="255" Unicode="false" FixedLength="false" />
+          <Property Name="ClientName" Type="String" Nullable="false" MaxLength="255" Unicode="false" FixedLength="false" />
+          <Property Name="EmailList" Type="String" MaxLength="Max" Unicode="false" FixedLength="false" />
+          <Property Name="EmailSubject" Type="String" MaxLength="255" Unicode="false" FixedLength="false" />
+          <Property Name="EmailText" Type="String" MaxLength="255" Unicode="false" FixedLength="false" />
+        </EntityType>
+        <EntityType Name="Customer_Programs">
+          <Key>
+            <PropertyRef Name="ID" />
+          </Key>
+          <Property Type="Int32" Name="ID" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Type="Int32" Name="Customer_ID" />
+          <Property Type="String" Name="Customer_Name" MaxLength="200" FixedLength="false" Unicode="false" />
+          <Property Type="String" Name="Program_RunTime" MaxLength="200" FixedLength="false" Unicode="false" />
+          <Property Type="String" Name="POC" MaxLength="200" FixedLength="false" Unicode="false" />
+          <Property Type="String" Name="Executable_Path" MaxLength="200" FixedLength="false" Unicode="false" />
+          <Property Type="String" Name="OutputFiles_Path" MaxLength="200" FixedLength="false" Unicode="false" />
+          <Property Type="String" Name="Comments" MaxLength="Max" FixedLength="false" Unicode="false" />
+        </EntityType>
+        <EntityType Name="APPLICATION_LOG">
+          <Key>
+            <PropertyRef Name="LogID" />
+          </Key>
+          <Property Type="Int32" Name="LogID" Nullable="false" />
+          <Property Type="String" Name="ApplicationName" MaxLength="500" FixedLength="false" Unicode="false" />
+          <Property Type="String" Name="ApplicationType" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Type="String" Name="InnerException" MaxLength="Max" FixedLength="false" Unicode="false" />
+          <Property Type="String" Name="StackTrace" MaxLength="Max" FixedLength="false" Unicode="false" />
+          <Property Type="String" Name="ApplicationMessage" MaxLength="Max" FixedLength="false" Unicode="false" />
+          <Property Type="DateTime" Name="LogDate" Precision="0" />
+          <Property Type="Int32" Name="IsError" />
+        </EntityType>
+      </Schema>
+    </edmx:ConceptualModels>
+    <!-- C-S mapping content -->
+    <edmx:Mappings>
+      <Mapping Space="C-S" xmlns="http://schemas.microsoft.com/ado/2009/11/mapping/cs">
+        <EntityContainerMapping StorageEntityContainer="TestModelStoreContainer" CdmEntityContainer="TestEntities">
+          <EntitySetMapping Name="tCustomerEmails">
+            <EntityTypeMapping TypeName="TestModel.tCustomerEmail">
+              <MappingFragment StoreEntitySet="tCustomerEmail">
+                <ScalarProperty Name="CustomerEmailID" ColumnName="CustomerEmailID" />
+                <ScalarProperty Name="ShortName" ColumnName="ShortName" />
+                <ScalarProperty Name="ClientName" ColumnName="ClientName" />
+                <ScalarProperty Name="EmailList" ColumnName="EmailList" />
+                <ScalarProperty Name="EmailSubject" ColumnName="EmailSubject" />
+                <ScalarProperty Name="EmailText" ColumnName="EmailText" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Customer_Programs">
+            <EntityTypeMapping TypeName="TestModel.Customer_Programs">
+              <MappingFragment StoreEntitySet="Customer_Programs">
+                <ScalarProperty Name="Comments" ColumnName="Comments" />
+                <ScalarProperty Name="OutputFiles_Path" ColumnName="OutputFiles_Path" />
+                <ScalarProperty Name="Executable_Path" ColumnName="Executable_Path" />
+                <ScalarProperty Name="POC" ColumnName="POC" />
+                <ScalarProperty Name="Program_RunTime" ColumnName="Program_RunTime" />
+                <ScalarProperty Name="Customer_Name" ColumnName="Customer_Name" />
+                <ScalarProperty Name="Customer_ID" ColumnName="Customer_ID" />
+                <ScalarProperty Name="ID" ColumnName="ID" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="APPLICATION_LOG">
+            <EntityTypeMapping TypeName="TestModel.APPLICATION_LOG">
+              <MappingFragment StoreEntitySet="APPLICATION_LOG">
+                <ScalarProperty Name="IsError" ColumnName="IsError" />
+                <ScalarProperty Name="LogDate" ColumnName="LogDate" />
+                <ScalarProperty Name="ApplicationMessage" ColumnName="ApplicationMessage" />
+                <ScalarProperty Name="StackTrace" ColumnName="StackTrace" />
+                <ScalarProperty Name="InnerException" ColumnName="InnerException" />
+                <ScalarProperty Name="ApplicationType" ColumnName="ApplicationType" />
+                <ScalarProperty Name="ApplicationName" ColumnName="ApplicationName" />
+                <ScalarProperty Name="LogID" ColumnName="LogID" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+        </EntityContainerMapping>
+      </Mapping>
+    </edmx:Mappings>
+  </edmx:Runtime>
+  <!-- EF Designer content (DO NOT EDIT MANUALLY BELOW HERE) -->
+  <Designer xmlns="http://schemas.microsoft.com/ado/2009/11/edmx">
+    <Connection>
+      <DesignerInfoPropertySet>
+        <DesignerProperty Name="MetadataArtifactProcessing" Value="EmbedInOutputAssembly" />
+      </DesignerInfoPropertySet>
+    </Connection>
+    <Options>
+      <DesignerInfoPropertySet>
+        <DesignerProperty Name="ValidateOnBuild" Value="true" />
+        <DesignerProperty Name="EnablePluralization" Value="True" />
+        <DesignerProperty Name="IncludeForeignKeysInModel" Value="True" />
+        <DesignerProperty Name="CodeGenerationStrategy" Value="None" />
+      </DesignerInfoPropertySet>
+    </Options>
+    <!-- Diagram content (shape and connector positions) -->
+    <Diagrams></Diagrams>
+  </Designer>
+</edmx:Edmx>

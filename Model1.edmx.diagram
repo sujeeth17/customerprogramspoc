@@ -1,0 +1,14 @@
+<?xml version="1.0" encoding="utf-8"?>
+<edmx:Edmx Version="3.0" xmlns:edmx="http://schemas.microsoft.com/ado/2009/11/edmx">
+ <!-- EF Designer content (DO NOT EDIT MANUALLY BELOW HERE) -->
+  <edmx:Designer xmlns="http://schemas.microsoft.com/ado/2009/11/edmx">
+    <!-- Diagram content (shape and connector positions) -->
+    <edmx:Diagrams>
+      <Diagram DiagramId="8a13bea1d2dc4b58afc45624f80f17eb" Name="Diagram1">
+        <EntityTypeShape EntityType="TestModel.tCustomerEmail" Width="1.5" PointX="0.75" PointY="0.75" IsExpanded="true" />
+        <EntityTypeShape EntityType="TestModel.Customer_Programs" Width="2.25" PointX="3" PointY="1.5" />
+        <EntityTypeShape EntityType="TestModel.APPLICATION_LOG" Width="1.5" PointX="11.924653518909892" PointY="6.7177064748097708" />
+      </Diagram>
+    </edmx:Diagrams>
+  </edmx:Designer>
+</edmx:Edmx>
